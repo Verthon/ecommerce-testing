@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Announcement } from "../components/announcement/announcement";
 import { ContentGrid } from "../components/content-grid/content-grid";
 import { CoreValues } from "../components/core-values/core-values";
-import { CustomerReviews } from "../components/customer-reviews/customer-reviews";
 import { FeaturedSection } from "../components/featured-section/featured-section";
 import { Footer } from "../components/footer/Footer";
 import { HeroHomepage } from "../components/hero-homepage/hero-hompage";
@@ -23,7 +22,6 @@ export default function Home() {
 			<CoreValues />
 			<FeaturedSection />
 			<ContentGrid />
-			<CustomerReviews />
 			<Footer />
 		</>
 	);
