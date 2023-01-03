@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { CartContent } from "../components/cart-content/cart-content";
+
 import { Footer } from "../components/footer/Footer";
 import { Navbar } from "../components/navbar/Navbar";
 
-export default function CartPage() {
+export default function RegisterPage() {
 	return (
 		<>
 			<Head>
@@ -13,7 +13,7 @@ export default function CartPage() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Navbar />
-      <CartContent />
+      Register page
 			<Footer />
 		</>
 	);

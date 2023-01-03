@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Footer = () => {
 	return (
 		<footer aria-label="Site Footer" className="bg-white">
@@ -61,7 +63,7 @@ export const Footer = () => {
 
 						<ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
 							<li>
-								<a
+								<Link
 									href="/"
 									rel="noreferrer"
 									target="_blank"
@@ -80,11 +82,11 @@ export const Footer = () => {
 											clip-rule="evenodd"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</li>
 
 							<li>
-								<a
+								<Link
 									href="/"
 									rel="noreferrer"
 									target="_blank"
@@ -103,11 +105,11 @@ export const Footer = () => {
 											clip-rule="evenodd"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</li>
 
 							<li>
-								<a
+								<Link
 									href="/"
 									rel="noreferrer"
 									target="_blank"
@@ -126,7 +128,7 @@ export const Footer = () => {
 											clip-rule="evenodd"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -138,39 +140,39 @@ export const Footer = () => {
 							<nav aria-label="Footer About Nav" className="mt-8">
 								<ul className="space-y-4 text-sm">
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Company History
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Meet the Team
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Employee Handbook
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Careers
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</nav>
@@ -182,39 +184,39 @@ export const Footer = () => {
 							<nav aria-label="Footer Services Nav" className="mt-8">
 								<ul className="space-y-4 text-sm">
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Web Development
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Web Design
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Marketing
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Google Ads
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</nav>
@@ -226,25 +228,25 @@ export const Footer = () => {
 							<nav aria-label="Footer Helpful Nav" className="mt-8">
 								<ul className="space-y-4 text-sm">
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											FAQs
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="text-gray-700 transition hover:text-gray-700/75"
 											href="/"
 										>
 											Support
-										</a>
+										</Link>
 									</li>
 
 									<li>
-										<a
+										<Link
 											className="group flex justify-center gap-1.5 sm:justify-start"
 											href="/"
 										>
@@ -256,7 +258,7 @@ export const Footer = () => {
 												<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
 												<span className="relative inline-flex h-2 w-2 rounded-full bg-teal-500"></span>
 											</span>
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</nav>
@@ -267,7 +269,7 @@ export const Footer = () => {
 
 							<ul className="mt-8 space-y-4 text-sm">
 								<li>
-									<a
+									<Link
 										className="flex items-center justify-center gap-1.5 sm:justify-start"
 										href="/"
 									>
@@ -287,11 +289,11 @@ export const Footer = () => {
 										</svg>
 
 										<span className="text-gray-700">john@doe.com</span>
-									</a>
+									</Link>
 								</li>
 
 								<li>
-									<a
+									<Link
 										className="flex items-center justify-center gap-1.5 sm:justify-start"
 										href="/"
 									>
@@ -311,7 +313,7 @@ export const Footer = () => {
 										</svg>
 
 										<span className="text-gray-700">0123456789</span>
-									</a>
+									</Link>
 								</li>
 
 								<li className="flex items-start justify-center gap-1.5 sm:justify-start">
@@ -349,21 +351,21 @@ export const Footer = () => {
 						<p className="text-sm text-gray-500">
 							<span className="block sm:inline">All rights reserved.</span>
 
-							<a
+							<Link
 								className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
 								href="/"
 							>
 								Terms & Conditions
-							</a>
+							</Link>
 
 							<span>&middot;</span>
 
-							<a
+							<Link
 								className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
 								href="/"
 							>
 								Privacy Policy
-							</a>
+							</Link>
 						</p>
 
 						<p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">

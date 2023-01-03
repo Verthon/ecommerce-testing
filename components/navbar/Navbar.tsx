@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Navbar = () => {
 	return (
 		<header aria-label="Site Header" className="border-b border-gray-100">
@@ -20,10 +22,10 @@ export const Navbar = () => {
 						</svg>
 					</button>
 
-					<a href="/" className="flex">
+					<Link href="/" className="flex">
 						<span className="sr-only">Logo</span>
 						<strong>Pillow Eyewear</strong>
-					</a>
+					</Link>
 				</div>
 
 				<div className="flex flex-1 items-center justify-end">
@@ -31,32 +33,32 @@ export const Navbar = () => {
 						aria-label="Site Nav"
 						className="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
 					>
-						<a
+						<Link
 							href="/about"
 							className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
 						>
 							About
-						</a>
+						</Link>
 
-						<a
+						<Link
 							href="/products"
 							className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
 						>
 							Products
-						</a>
+						</Link>
 
-						<a
+						<Link
 							href="/contact"
 							className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
 						>
 							Contact
-						</a>
+						</Link>
 					</nav>
 
 					<div className="ml-8 flex items-center">
 						<div className="flex items-center divide-x divide-gray-100 border-x border-gray-100">
 							<span>
-								<a
+								<Link
 									href="/cart"
 									className="block border-b-4 border-transparent p-6 hover:border-red-700"
 								>
@@ -76,11 +78,11 @@ export const Navbar = () => {
 									</svg>
 
 									<span className="sr-only">Cart</span>
-								</a>
+								</Link>
 							</span>
 
 							<span>
-								<a
+								<Link
 									href="/account"
 									className="block border-b-4 border-transparent p-6 hover:border-red-700"
 								>
@@ -100,11 +102,11 @@ export const Navbar = () => {
 									</svg>
 
 									<span className="sr-only"> Account </span>
-								</a>
+								</Link>
 							</span>
 
 							<span className="hidden sm:block">
-								<a
+								<Link
 									href="/search"
 									className="block border-b-4 border-transparent p-6 hover:border-red-700"
 								>
@@ -124,7 +126,7 @@ export const Navbar = () => {
 									</svg>
 
 									<span className="sr-only"> Search </span>
-								</a>
+								</Link>
 							</span>
 						</div>
 					</div>

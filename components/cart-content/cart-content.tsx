@@ -36,7 +36,7 @@ export const CartContent = () => {
 
 								<div className="flex items-center justify-end flex-1 gap-2">
 									<form>
-										<label for="Line1Qty" className="sr-only">
+										<label htmlFor="Line1Qty" className="sr-only">
 											{" "}
 											Quantity{" "}
 										</label>
@@ -96,7 +96,7 @@ export const CartContent = () => {
 
 								<div className="flex items-center justify-end flex-1 gap-2">
 									<form>
-										<label for="Line2Qty" className="sr-only">
+										<label htmlFor="Line2Qty" className="sr-only">
 											{" "}
 											Quantity{" "}
 										</label>
@@ -156,7 +156,7 @@ export const CartContent = () => {
 
 								<div className="flex items-center justify-end flex-1 gap-2">
 									<form>
-										<label for="Line3Qty" className="sr-only">
+										<label htmlFor="Line3Qty" className="sr-only">
 											{" "}
 											Quantity{" "}
 										</label>

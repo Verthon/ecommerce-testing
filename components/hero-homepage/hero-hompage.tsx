@@ -14,7 +14,7 @@ export const HeroHomepage = () => {
 
 					<p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
 						Our eyewear is unique style and uncompromising quality based on
-						materials from the world's best manufacturers.
+						materials from the world&apos;s best manufacturers.
 					</p>
 
 					<div className="mt-8 flex flex-wrap gap-4 text-center">
