@@ -3,7 +3,7 @@ import * as z from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import type { RegisterFormInputs } from "./form.types";
-import { registerFormSchema } from "./form.schema";
+import { RegisterFormSchema, registerFormSchema } from "./form.schema";
 
 export const Form = () => {
 	const {
@@ -11,11 +11,18 @@ export const Form = () => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<RegisterFormInputs>({
+	} = useForm<RegisterFormSchema>({
 		resolver: zodResolver(registerFormSchema),
 	});
-	const onSubmit: SubmitHandler<RegisterFormInputs> = (data) =>
-		console.log(data);
+	const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
+		await fetch("/api/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+	}
 
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -33,6 +40,22 @@ export const Form = () => {
 					placeholder="name@company.com"
 					required
 					{...register("email")}
+				/>
+			</div>
+			<div>
+				<label
+					htmlFor="companyName"
+					className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+				>
+					Your company name
+				</label>
+				<input
+					type="text"
+					id="companyName"
+					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					placeholder="Mighty Corp"
+					required
+					{...register("companyName")}
 				/>
 			</div>
 			<div>

@@ -13,13 +13,18 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}": types.GetAllProductsDocument,
+    "mutation CreateAccount($email: String!, $password: String!, $companyName: String!) {\n  createAccount(\n    data: {email: $email, password: $password, companyName: $companyName}\n  ) {\n    id\n  }\n}": types.CreateAccountDocument,
+    "query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}) {\n    id\n    email\n    password\n  }\n}": types.GetAllProductsDocument,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}"): (typeof documents)["query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}"];
+export function graphql(source: "mutation CreateAccount($email: String!, $password: String!, $companyName: String!) {\n  createAccount(\n    data: {email: $email, password: $password, companyName: $companyName}\n  ) {\n    id\n  }\n}"): (typeof documents)["mutation CreateAccount($email: String!, $password: String!, $companyName: String!) {\n  createAccount(\n    data: {email: $email, password: $password, companyName: $companyName}\n  ) {\n    id\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}) {\n    id\n    email\n    password\n  }\n}"): (typeof documents)["query GetAllProducts {\n  products {\n    id\n    slug\n    name\n    description\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}) {\n    id\n    email\n    password\n  }\n}"];
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.

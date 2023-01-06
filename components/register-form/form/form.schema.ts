@@ -5,6 +5,7 @@ export const registerFormSchema = z
 		email: z.string().email(),
 		password: z.string().min(8),
 		confirmPassword: z.string().min(8),
+    companyName: z.string(),
 	})
 	.superRefine(({ password, confirmPassword }, ctx) => {
 		if (confirmPassword !== password) {

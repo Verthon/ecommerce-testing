@@ -8,4 +8,7 @@ export const apolloClient = new ApolloClient({
 export const authorizedApolloClient = new ApolloClient({
 	uri: process.env.HYPERGRAPH_CONTENT_API,
 	cache: new InMemoryCache(),
+	headers: {
+		Authorization: `Bearer ${process.env.HYPERGRAPH_TOKEN}`
+	}
 });
