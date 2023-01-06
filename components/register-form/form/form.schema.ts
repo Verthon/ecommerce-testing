@@ -14,3 +14,5 @@ export const registerFormSchema = z
 			});
 		}
 	});
+
+export type RegisterFormSchema = z.infer<typeof registerFormSchema>;
