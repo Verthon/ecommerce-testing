@@ -1,7 +1,18 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import * as bcrypt from "bcrypt";
 
-export const authOptions = {
+import {
+	GetAccountByEmailDocument,
+	GetAccountByEmailQuery,
+	GetAccountByEmailQueryVariables,
+} from "../../../generated/graphql";
+import { authorizedApolloClient } from "../../../graphql/apolloClient";
+
+export const authOptions: AuthOptions = {
+	pages: {
+		signIn: '/login'
+	},
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
@@ -9,20 +20,40 @@ export const authOptions = {
 				username: { label: "Username", type: "text", placeholder: "jsmith" },
 				password: { label: "Password", type: "password" },
 			},
-			async authorize(credentials, req) {
-				const res = await fetch("/your/endpoint", {
-					method: "POST",
-					body: JSON.stringify(credentials),
-					headers: { "Content-Type": "application/json" },
-				});
-				const user = await res.json();
-
-				// If no error and we have user data, return it
-				if (res.ok && user) {
-					return user;
+			async authorize(credentials) {
+				if (!credentials) {
+					return null;
 				}
-				// Return null if user data could not be retrieved
-				return null;
+
+				const userByEmail = await authorizedApolloClient.query<
+					GetAccountByEmailQuery,
+					GetAccountByEmailQueryVariables
+				>({
+					query: GetAccountByEmailDocument,
+					variables: {
+						email: credentials.username,
+					},
+				});
+
+				if (!userByEmail.data.account?.password) {
+					return null;
+				}
+
+				const hashedPassword = userByEmail.data.account?.password;
+
+				const arePasswordsEqual = await bcrypt.compare(
+					credentials.password,
+					hashedPassword
+				);
+
+				if (!arePasswordsEqual) {
+					return null;
+				}
+
+				return {
+					id: userByEmail?.data?.account?.id,
+					email: userByEmail?.data?.account?.email,
+				};
 			},
 		}),
 	],
