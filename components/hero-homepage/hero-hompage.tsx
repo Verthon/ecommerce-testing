@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const HeroHomepage = () => {
 	return (
 		<section className="relative bg-[url(https://images.unsplash.com/photo-1576781775559-4921ba325ec4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjE5fHxleWV3ZWFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60)] bg-cover bg-center bg-no-repeat">
@@ -18,19 +20,12 @@ export const HeroHomepage = () => {
 					</p>
 
 					<div className="mt-8 flex flex-wrap gap-4 text-center">
-						<a
-							href="#"
-							className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+						<Link
+							href="/products"
+							className="block sx-auto rounded px-12 py-3 text-sm font-bold text-rose-600 hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
 						>
-							Check offer
-						</a>
-
-						<a
-							href="#"
-							className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
-						>
-							Learn More
-						</a>
+							Shop now
+						</Link>
 					</div>
 				</div>
 			</div>
