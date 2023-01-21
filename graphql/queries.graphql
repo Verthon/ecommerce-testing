@@ -31,3 +31,17 @@ query GetAccountByEmail($email: String!) {
     password
   }
 }
+
+query GetAllCategories {
+  categories {
+    id
+    name
+    description
+    image {
+      id
+      height
+      width
+      url
+    }
+  }
+}
