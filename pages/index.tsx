@@ -1,12 +1,45 @@
 import Head from "next/head";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+
 import { Announcement } from "../components/announcement/announcement";
 import { ContentGrid } from "../components/content-grid/content-grid";
 import { FeaturedSection } from "../components/featured-section/featured-section";
 import { Footer } from "../components/footer/Footer";
 import { HeroHomepage } from "../components/hero-homepage/hero-hompage";
 import { Navbar } from "../components/navbar/Navbar";
+import { apolloClient } from "../graphql/apolloClient";
+import {
+	Category,
+	GetAllCategoriesByPrimaryDocument,
+	GetAllCategoriesByPrimaryQuery,
+} from "../generated/graphql";
+import { ApolloQueryResult } from "@apollo/client";
 
-export default function Home() {
+export const getStaticProps: GetStaticProps<{
+	productCategories: {
+		isLoading: boolean;
+		categories: ApolloQueryResult<GetAllCategoriesByPrimaryQuery>["data"]["categories"];
+	};
+}> = async (_context) => {
+	const primaryProductsCategories =
+		await apolloClient.query<GetAllCategoriesByPrimaryQuery>({
+			query: GetAllCategoriesByPrimaryDocument,
+			variables: { isPrimaryCategory: true },
+		});
+
+	return {
+		props: {
+			productCategories: {
+				isLoading: primaryProductsCategories.loading,
+				categories: primaryProductsCategories.data.categories,
+			},
+		},
+	};
+};
+
+export default function Home({
+	productCategories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<Head>

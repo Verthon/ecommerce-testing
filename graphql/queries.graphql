@@ -45,3 +45,17 @@ query GetAllCategories {
     }
   }
 }
+
+query GetAllCategoriesByPrimary($isPrimaryCategory: Boolean!) {
+  categories(where: {isPrimaryCategory: $isPrimaryCategory}) {
+    id
+    name
+    description
+    image {
+      id
+      height
+      width
+      url
+    }
+  }
+}
