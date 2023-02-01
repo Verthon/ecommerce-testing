@@ -5,6 +5,8 @@
   "home.navbar.products": "products",
   "home.navbar.aboutBrand": "About Brand",
   "home.navbar.contact": "contact",
+  "home.navbar.logout": "Logout",
+  "home.navbar.login": "Login",
   "account.pageTitle": "Account",
   "global.navbar.english": "English",
   "global.navbar.polish": "Polish"

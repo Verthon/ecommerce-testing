@@ -7,9 +7,11 @@ import { AppLocale } from 'i18n/i18n.types';
 import { LocaleContext } from 'context/locale/LocaleContext';
 
 import type { LocaleProviderProps } from './locale-provider.types';
+import { useRouter } from 'next/router';
 
 export const LocaleProvider = ({ children }: LocaleProviderProps) => {
-  const defaultLocale = 'en'
+  const router = useRouter();
+  const defaultLocale = router.locale?.split("-")[0] as AppLocale|| 'en';
   const [locale, setLocale] = React.useState<AppLocale>(defaultLocale);
 
   return (

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 
 import { useLocale } from "hooks/useLocale/useLocale";
 import { NavItem } from "./nav-item/nav-item";
-import { UserMenu } from "./user-menu/user-menu";
 import { LangSwitcher } from "components/lang-switcher/lang-switcher";
+import { useSession } from "next-auth/react";
 
 const useNavLinks = () => {
 	const { t } = useLocale();
@@ -41,6 +42,14 @@ const useNavLinks = () => {
 export const Navbar = () => {
 	const { t } = useLocale();
 	const { navLinks } = useNavLinks();
+	const { status } = useSession();
+
+	console.log('status', status);
+
+	const handleLogout = () => {
+		signOut();
+	};
+
 	return (
 		<nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
 			<div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -55,8 +64,24 @@ export const Navbar = () => {
 					</span>
 				</Link>
 				<div className="flex items-center md:order-2">
-					<UserMenu />
+					{/* <UserMenu /> */}
 					<LangSwitcher />
+					{status === "authenticated" ? (
+						<button
+							type="button"
+							onClick={handleLogout}
+							className="py-1.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+						>
+							{t("home.navbar.logout")}
+						</button>
+					) : (
+						<Link
+							href="/api/auth/signin"
+							className="py-1.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+						>
+							{t("home.navbar.login")}
+						</Link>
+					)}
 					<div
 						className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 						id="user-dropdown"

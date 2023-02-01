@@ -1,11 +1,11 @@
 import type { NextApiHandler } from "next";
 import * as bcrypt from "bcrypt";
-import { authorizedApolloClient } from "../../graphql/apolloClient";
+import { authorizedApolloClient } from "../../../graphql/apolloClient";
 import {
 	CreateAccountDocument,
 	CreateAccountMutation,
 	CreateAccountMutationVariables,
-} from "../../generated/graphql";
+} from "../../../generated/graphql";
 
 const RegisterHandler: NextApiHandler = async (req, res) => {
 	const { email, password, companyName } = req.body;

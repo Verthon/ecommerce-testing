@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { getCsrfToken, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -6,7 +6,15 @@ import { Footer } from "../components/footer/Footer";
 import { LoginForm } from "../components/login-form/login-form";
 import { Navbar } from "../components/navbar/Navbar";
 
-export default function LoginPage() {
+export async function getServerSideProps(context: any) {
+  return {
+    props: {
+      csrfToken: await getCsrfToken(context),
+    },
+  }
+}
+
+export default function LoginPage({ csrfToken }: { csrfToken: string | undefined  }) {
 	const session = useSession();
 	const router = useRouter();
 
