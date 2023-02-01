@@ -29,8 +29,8 @@ export const getStaticProps: GetStaticProps<{
 	return {
 		props: {
 			productCategories: {
-				isLoading: primaryProductsCategories.loading,
-				categories: primaryProductsCategories.data.categories,
+				isLoading: primaryProductsCategories?.loading,
+				categories: primaryProductsCategories?.data?.categories,
 			},
 		},
 	};
