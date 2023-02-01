@@ -20,17 +20,17 @@ export const getStaticProps: GetStaticProps<{
 		categories: ApolloQueryResult<GetAllCategoriesByPrimaryQuery>["data"]["categories"];
 	};
 }> = async (_context) => {
-	const primaryProductsCategories =
-		await apolloClient.query<GetAllCategoriesByPrimaryQuery>({
-			query: GetAllCategoriesByPrimaryDocument,
-			variables: { isPrimaryCategory: true },
-		});
+	// const primaryProductsCategories =
+	// 	await apolloClient.query<GetAllCategoriesByPrimaryQuery>({
+	// 		query: GetAllCategoriesByPrimaryDocument,
+	// 		variables: { isPrimaryCategory: true },
+	// 	});
 
 	return {
 		props: {
 			productCategories: {
-				isLoading: primaryProductsCategories?.loading,
-				categories: primaryProductsCategories?.data?.categories,
+				isLoading: false,
+				categories: [],
 			},
 		},
 	};
