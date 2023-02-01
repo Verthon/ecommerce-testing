@@ -5,5 +5,7 @@
   "home.navbar.products": "produkty",
   "home.navbar.aboutBrand": "o nas",
   "home.navbar.contact": "kontakt",
-  "account.pageTitle": "Konto"
+  "account.pageTitle": "Konto",
+  "global.navbar.english": "Angielski",
+  "global.navbar.polish": "Polski"
 }

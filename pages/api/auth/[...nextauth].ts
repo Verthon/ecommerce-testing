@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from "bcrypt";
 
@@ -9,7 +9,8 @@ import {
 } from "../../../generated/graphql";
 import { authorizedApolloClient } from "../../../graphql/apolloClient";
 
-export const authOptions: AuthOptions = {
+
+export const authOptions = {
 	pages: {
 		signIn: '/login'
 	},
@@ -59,4 +60,5 @@ export const authOptions: AuthOptions = {
 	],
 };
 
+//@ts-ignore
 export default NextAuth(authOptions);

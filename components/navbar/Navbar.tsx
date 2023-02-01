@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 
 import { useLocale } from "hooks/useLocale/useLocale";
 import { NavItem } from "./nav-item/nav-item";
+import { UserMenu } from "./user-menu/user-menu";
+import { LangSwitcher } from "components/lang-switcher/lang-switcher";
 
 const useNavLinks = () => {
 	const { t } = useLocale();
@@ -53,17 +55,8 @@ export const Navbar = () => {
 					</span>
 				</Link>
 				<div className="flex items-center md:order-2">
-					<button
-						type="button"
-						className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-						id="user-menu-button"
-						aria-expanded="false"
-						data-dropdown-toggle="user-dropdown"
-						data-dropdown-placement="bottom"
-					>
-						<span className="sr-only">Open user menu</span>
-						<img className="w-8 h-8 rounded-full" alt="user photo" />
-					</button>
+					<UserMenu />
+					<LangSwitcher />
 					<div
 						className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
 						id="user-dropdown"
