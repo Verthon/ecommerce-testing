@@ -1,4 +1,9 @@
 {
-  "home.heroTitle": "The art ofhandcrafted eyewear.",
-  "home.heroDescription": "Our eyewear is unique style and uncompromising quality based on materials from the world's best manufacturers."
+  "home.heroTitle": "The art of handcrafted eyewear.",
+  "home.heroDescription": "Our eyewear is unique style and uncompromising quality based on materials from the world's best manufacturers.",
+  "home.shopNow": "Shop now",
+  "home.navbar.products": "products",
+  "home.navbar.aboutBrand": "About Brand",
+  "home.navbar.contact": "contact",
+  "account.pageTitle": "Account"
 }

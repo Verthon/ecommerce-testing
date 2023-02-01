@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 
 import { GraphQlProvider } from "../providers/graphql-provider/graphql-provider";
+import { LocaleProvider } from "providers/locale/locale-provider";
 
 export default function App({
 	Component,
@@ -11,7 +12,9 @@ export default function App({
 	return (
 		<SessionProvider session={session}>
 			<GraphQlProvider>
-				<Component {...pageProps} />
+				<LocaleProvider>
+					<Component {...pageProps} />
+				</LocaleProvider>
 			</GraphQlProvider>
 		</SessionProvider>
 	);

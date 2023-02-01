@@ -1,5 +1,9 @@
 {
   "home.heroTitle": "Sztuka ręcznego wykonania okularów.",
   "home.heroDescription": "Nasze okulary to niepowtarzalny styl i bezkompromisowa jakość oparta na materiałach od najlepszych światowych producentów.",
-  "home.shopNow": "Sprawdz ofertę"
+  "home.shopNow": "Sprawdz ofertę",
+  "home.navbar.products": "produkty",
+  "home.navbar.aboutBrand": "o nas",
+  "home.navbar.contact": "kontakt",
+  "account.pageTitle": "Konto"
 }
