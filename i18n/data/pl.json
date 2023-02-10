@@ -9,5 +9,12 @@
   "home.navbar.login": "Logowanie",
   "account.pageTitle": "Konto",
   "global.navbar.english": "Angielski",
-  "global.navbar.polish": "Polski"
+  "global.navbar.polish": "Polski",
+  "login.form.title": "Zaloguj się",
+	"login.form.emailLabel": "Twój email",
+	"login.form.passwordLabel": "Hasło",
+	"login.form.noAccount": "Nie posiadasz konta ?",
+  "login.form.singIn": "Zaloguj",
+  "login.form.rememberMe": "Zapamiętaj mnie",
+	"login.form.signUp": "Zarejestruj się"
 }

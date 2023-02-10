@@ -11,9 +11,9 @@ import { authorizedApolloClient } from "../../../graphql/apolloClient";
 
 
 export const authOptions = {
-	// pages: {
-	// 	signIn: '/login'
-	// },
+	pages: {
+		signIn: '/login'
+	},
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",

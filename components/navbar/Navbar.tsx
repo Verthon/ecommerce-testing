@@ -44,8 +44,6 @@ export const Navbar = () => {
 	const { navLinks } = useNavLinks();
 	const { status } = useSession();
 
-	console.log('status', status);
-
 	const handleLogout = () => {
 		signOut();
 	};
