@@ -1,34 +1,36 @@
+import { Link } from "components/link/Link";
 import { useLocale } from "hooks/useLocale/useLocale";
-import Link from "next/link";
+import Image from "next/image";
+
+import heroImage from "./assets/hero-image.jpg";
 
 export const HeroHomepage = () => {
 	const { t } = useLocale();
 
 	return (
-		<section className="relative bg-[url(https://images.unsplash.com/photo-1576781775559-4921ba325ec4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjE5fHxleWV3ZWFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60)] bg-cover bg-center bg-no-repeat">
-			<div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25"></div>
+		<section className="container mx-auto my-6 sm:my-12 text-gray-900 bg-white">
 
-			<div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:items-center lg:px-8">
-				<div className="max-w-xl text-center sm:text-left">
-					<h1 className="text-3xl font-extrabold sm:text-5xl">
-						{t('home.heroTitle.art')}
-						<strong className="block font-extrabold text-rose-700">
-						{t('home.heroTitle.handcrafted')}
+			<div className="grid lg:grid-cols-2 px-4 py-8 sm:px-6 md:px-28 md:py-20 bg-gray-50 ">
+				<div className="max-w-xl order-2 sm:order-1 mb-12 sm:mb-0 text-center sm:text-left sm:pl-6">
+					<h1 className="text-3xl font-bold sm:text-4xl mb-8">
+						{t("home.heroTitle.art")}
+						<strong className="block font-bold">
+							{t("home.heroTitle.handcrafted")}
 						</strong>
 					</h1>
 
-					<p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-						{t('home.heroDescription')}
+					<p className="mt-4 max-w-lg sm:text-lg sm:leading-loose text-gray-500">
+						{t("home.heroDescription")}
 					</p>
 
-					<div className="mt-8 flex flex-wrap gap-4 text-center">
-						<Link
-							href="/products"
-							className="block sx-auto rounded px-12 py-3 text-sm font-bold text-rose-600 hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
-						>
-							{t('home.shopNow')}
+					<div className="mt-8 flex mx-auto flex-wrap gap-4">
+						<Link href="/products" variant="filled">
+							{t("home.shopNow")}
 						</Link>
 					</div>
+				</div>
+				<div className="flex justify-self-end mb-6 sm:mb-0 order-1 sm:order-2 sm:pr-6">
+					<Image src={heroImage} width={640} height={420} alt="" quality={100} />
 				</div>
 			</div>
 		</section>
