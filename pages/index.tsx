@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { NetworkStatus } from '@apollo/client';
 
 import { ContentGrid } from "../components/content-grid/content-grid";
 import { FeaturedSection } from "../components/featured-section/featured-section";
@@ -20,17 +21,19 @@ export const getStaticProps: GetStaticProps<{
 		categories: ApolloQueryResult<GetAllCategoriesByPrimaryQuery>["data"]["categories"];
 	};
 }> = async (_context) => {
-	// const primaryProductsCategories =
-	// 	await apolloClient.query<GetAllCategoriesByPrimaryQuery>({
-	// 		query: GetAllCategoriesByPrimaryDocument,
-	// 		variables: { isPrimaryCategory: true },
-	// 	});
+	const primaryProductsCategories =
+		await apolloClient.query<GetAllCategoriesByPrimaryQuery>({
+			query: GetAllCategoriesByPrimaryDocument,
+			variables: { isPrimaryCategory: true },
+		});
+
+	console.log("primaryProductsCategories", primaryProductsCategories);
 
 	return {
 		props: {
 			productCategories: {
-				isLoading: false,
-				categories: [],
+				isLoading: primaryProductsCategories.networkStatus === NetworkStatus.loading,
+				categories: primaryProductsCategories.data.categories,
 			},
 		},
 	};

@@ -3,39 +3,42 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import type { RegisterFormInputs } from "./form.types";
 import { RegisterFormSchema, registerFormSchema } from "./form.schema";
+import { useLocale } from "hooks/useLocale/useLocale";
 
 export const Form = () => {
+	const { t } = useLocale();
 	const {
 		register,
 		handleSubmit,
 		watch,
-		formState: { errors },
+		formState: { errors, isValid },
 	} = useForm<RegisterFormSchema>({
 		resolver: zodResolver(registerFormSchema),
 	});
+
 	const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
 		await fetch("/api/register", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(data)
-		})
-	}
+			body: JSON.stringify(data),
+		});
+	};
 
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
 			<div>
 				<label
 					htmlFor="email"
-					className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					className="block mb-2 text-sm font-medium text-gray-900"
 				>
-					Your email
+					{t("register.form.emailLabel")}
 				</label>
 				<input
 					type="email"
 					id="email"
-					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
 					placeholder="name@company.com"
 					required
 					{...register("email")}
@@ -44,14 +47,14 @@ export const Form = () => {
 			<div>
 				<label
 					htmlFor="companyName"
-					className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					className="block mb-2 text-sm font-medium text-gray-900"
 				>
-					Your company name
+					{t("register.form.companyLabel")}
 				</label>
 				<input
 					type="text"
 					id="companyName"
-					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
 					placeholder="Mighty Corp"
 					required
 					{...register("companyName")}
@@ -62,13 +65,13 @@ export const Form = () => {
 					htmlFor="password"
 					className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 				>
-					Password
+					{t("register.form.passwordLabel")}
 				</label>
 				<input
 					type="password"
 					id="password"
 					placeholder="••••••••"
-					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
 					required
 					{...register("password")}
 				/>
@@ -76,15 +79,15 @@ export const Form = () => {
 			<div>
 				<label
 					htmlFor="confirm-password"
-					className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					className="block mb-2 text-sm font-medium text-gray-900"
 				>
-					Confirm password
+					{t("register.form.confirmPassword")}
 				</label>
 				<input
 					type="confirm-password"
 					id="confirm-password"
 					placeholder="••••••••"
-					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
 					required
 					{...register("confirmPassword")}
 				/>
@@ -95,38 +98,33 @@ export const Form = () => {
 						id="terms"
 						aria-describedby="terms"
 						type="checkbox"
-						className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+						className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
 						required
 					/>
 				</div>
 				<div className="ml-3 text-sm">
-					<label
-						htmlFor="terms"
-						className="font-light text-gray-500 dark:text-gray-300"
-					>
-						I accept the{" "}
+					<label htmlFor="terms" className="font-light text-gray-500">
+						{t("register.form.acceptTerms")}{" "}
 						<a
-							className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+							className="font-medium text-primary-600 hover:underline"
 							href="#"
 						>
-							Terms and Conditions
+							{t("register.form.termsAndConditions")}
 						</a>
 					</label>
 				</div>
 			</div>
 			<button
+				disabled={!isValid}
 				type="submit"
-				className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+				className="w-full text-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
 			>
-				Create an account
+				{t('register.form.submit')}
 			</button>
-			<p className="text-sm font-light text-gray-500 dark:text-gray-400">
-				Already have an account?{" "}
-				<a
-					href="#"
-					className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-				>
-					Login here
+			<p className="text-sm font-light text-gray-500">
+				{t("register.form.alreadyHaveAccount")}{" "}
+				<a href="/login" className="font-medium text-primary-600 hover:underline">
+					{t("register.form.loginHere")}
 				</a>
 			</p>
 		</form>

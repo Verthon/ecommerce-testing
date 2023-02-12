@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from "bcrypt";
 
@@ -9,16 +9,15 @@ import {
 } from "../../../generated/graphql";
 import { authorizedApolloClient } from "../../../graphql/apolloClient";
 
-
 export const authOptions = {
 	pages: {
-		signIn: '/login'
+		signIn: "/login",
 	},
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
 			credentials: {
-				username: { label: "Username", type: "text", placeholder: "jsmith" },
+				email: { label: "Email", type: "text", placeholder: "jsmith" },
 				password: { label: "Password", type: "password" },
 			},
 			async authorize(credentials) {
@@ -32,9 +31,13 @@ export const authOptions = {
 				>({
 					query: GetAccountByEmailDocument,
 					variables: {
-						email: credentials.username,
+						email: credentials.email,
 					},
 				});
+
+				if (userByEmail.error) {
+					return null;
+				}
 
 				if (!userByEmail.data.account?.password) {
 					return null;

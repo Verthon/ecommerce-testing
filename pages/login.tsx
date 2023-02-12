@@ -7,15 +7,7 @@ import { LoginForm } from "../login/login-form/login-form";
 import { Navbar } from "../components/navbar/Navbar";
 import { LoginPageProps } from "login/login.types";
 
-export async function getServerSideProps(context: any) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  }
-}
-
-export default function LoginPage({ csrfToken }: LoginPageProps) {
+export default function LoginPage() {
 	const session = useSession();
 	const router = useRouter();
 
@@ -33,7 +25,7 @@ export default function LoginPage({ csrfToken }: LoginPageProps) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Navbar />
-			<LoginForm csrfToken={csrfToken} />
+			<LoginForm />
 			<Footer />
 		</>
 	);

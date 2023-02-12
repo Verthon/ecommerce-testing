@@ -1,8 +1,8 @@
 import { useLocale } from "hooks/useLocale/useLocale";
 import Link from "next/link";
-import { LoginFormProps } from "./login-form.types";
+import { LoginFormUIProps } from "./login-form.types";
 
-export const Form = ({ csrfToken, onSubmit }: LoginFormProps) => {
+export const Form = ({ csrfToken, register, isSubmitDisabled, onSubmit }: LoginFormUIProps) => {
 	const { t } = useLocale();
 
 	return (
@@ -20,11 +20,10 @@ export const Form = ({ csrfToken, onSubmit }: LoginFormProps) => {
 				</label>
 				<input
 					type="email"
-					name="email"
 					id="email"
 					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
 					placeholder="name@company.com"
-					required
+					{...register('email')}
 				/>
 			</div>
 			<div>
@@ -36,11 +35,10 @@ export const Form = ({ csrfToken, onSubmit }: LoginFormProps) => {
 				</label>
 				<input
 					type="password"
-					name="password"
 					id="password"
 					placeholder="••••••••"
 					className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-					required
+					{...register('password')}
 				/>
 			</div>
 			<div className="flex items-center justify-between">
@@ -62,7 +60,8 @@ export const Form = ({ csrfToken, onSubmit }: LoginFormProps) => {
 			</div>
 			<button
 				type="submit"
-				className="w-full bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+				disabled={isSubmitDisabled}
+				className="w-full text-gray-900 border-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:cursor-not-allowed"
 			>
 				{t("login.form.singIn")}
 			</button>

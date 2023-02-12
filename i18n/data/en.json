@@ -1,5 +1,6 @@
 {
-	"home.heroTitle": "The art of handcrafted eyewear.",
+	"home.heroTitle.art": "The art of",
+	"home.heroTitle.handcrafted": "handcrafted eyewear.", 
 	"home.heroDescription": "Our eyewear is unique style and uncompromising quality based on materials from the world's best manufacturers.",
 	"home.shopNow": "Shop now",
 	"home.navbar.products": "products",
@@ -11,9 +12,21 @@
 	"global.navbar.english": "English",
 	"global.navbar.polish": "Polish",
 	"login.form.title": "Sign in to your account",
-	"login.form.emailLabel": "Your email",
+	"login.form.emailLabel": "Email",
 	"login.form.passwordLabel": "Password",
 	"login.form.noAccount": "Don’t have an account yet?",
+	"login.form.singIn": "Sign in",
   "login.form.rememberMe": "Remember me",
-	"login.form.signUp": "Sign up"
+	"login.form.signUp": "Sign up",
+	"register.pageTitle": "Create a new account",
+	"register.form.createAccount": "Create an account",
+	"register.form.emailLabel": "Email",
+	"register.form.companyLabel": "Company name",
+	"register.form.passwordLabel": "Your password",
+	"register.form.confirmPassword": "Confirm password",
+	"register.form.submit": "Create an account",
+	"register.form.acceptTerms": "I accept the",
+	"register.form.termsAndConditions": "Terms and Conditions",
+	"register.form.alreadyHaveAccount": "Already have account ?",
+  "register.form.loginHere": "Login here"
 }

@@ -11,14 +11,14 @@ export const HeroHomepage = () => {
 			<div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:items-center lg:px-8">
 				<div className="max-w-xl text-center sm:text-left">
 					<h1 className="text-3xl font-extrabold sm:text-5xl">
-						The art of
+						{t('home.heroTitle.art')}
 						<strong className="block font-extrabold text-rose-700">
-							handcrafted eyewear.
+						{t('home.heroTitle.handcrafted')}
 						</strong>
 					</h1>
 
 					<p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-						{t('home.heroTitle')}
+						{t('home.heroDescription')}
 					</p>
 
 					<div className="mt-8 flex flex-wrap gap-4 text-center">
