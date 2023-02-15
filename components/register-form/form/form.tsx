@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import type { RegisterFormInputs } from "./form.types";
 import { RegisterFormSchema, registerFormSchema } from "./form.schema";
 import { useLocale } from "hooks/useLocale/useLocale";
+import Link from "next/link";
 
 export const Form = () => {
 	const { t } = useLocale();
@@ -123,9 +124,9 @@ export const Form = () => {
 			</button>
 			<p className="text-sm font-light text-gray-500">
 				{t("register.form.alreadyHaveAccount")}{" "}
-				<a href="/login" className="font-medium text-primary-600 hover:underline">
+				<Link href="/login" className="font-medium text-primary-600 hover:underline">
 					{t("register.form.loginHere")}
-				</a>
+				</Link>
 			</p>
 		</form>
 	);

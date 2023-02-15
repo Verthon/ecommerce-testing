@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 
 export const LocaleProvider = ({ children }: LocaleProviderProps) => {
   const router = useRouter();
-  const defaultLocale = router.locale?.split("-")[0] as AppLocale|| 'en';
+  const defaultLocale = router.locale?.split("-")[0] as AppLocale || 'en';
   const [locale, setLocale] = React.useState<AppLocale>(defaultLocale);
 
   return (

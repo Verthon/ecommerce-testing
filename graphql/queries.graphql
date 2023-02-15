@@ -49,13 +49,32 @@ query GetAllCategories {
 query GetAllCategoriesByPrimary($isPrimaryCategory: Boolean!) {
   categories(where: {isPrimaryCategory: $isPrimaryCategory}) {
     id
-    name
-    description
+    localizations(locales: [en, pl], includeCurrent: true) {
+      name
+      description
+      locale
+    }
+    slug
     image {
       id
       height
       width
-      url
+      url(transformation: {image: {resize: {fit: crop, height: 250, width: 250}}})
+    }
+  }
+}
+
+query GetAllCategoriesByPrimaryWithLocale($isPrimaryCategory: Boolean!, $locale: Locale!) {
+  categories(where: {isPrimaryCategory: $isPrimaryCategory}, locales:[$locale]) {
+    id
+    name,
+    description,
+    slug
+    image {
+      id
+      height
+      width
+      url(transformation: {image: {resize: {fit: crop, height: 250, width: 250}}})
     }
   }
 }

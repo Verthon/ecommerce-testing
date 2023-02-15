@@ -3,10 +3,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useLocale } from "hooks/useLocale/useLocale";
 import { Form } from "./form";
-import { LoginFormProps, LoginFormSchema } from "./login-form.types";
-import { signIn, useSession } from "next-auth/react";
+import { LoginFormSchema } from "./login-form.types";
+import { signIn } from "next-auth/react";
 
-export const LoginForm = ({ csrfToken }: LoginFormProps) => {
+export const LoginForm = () => {
 	const { t } = useLocale();
 	const {
 		register,
@@ -18,9 +18,6 @@ export const LoginForm = ({ csrfToken }: LoginFormProps) => {
 
 	const handleSubmitAction: SubmitHandler<LoginFormSchema> = async (data) => {
 		const b = await signIn('credentials', { email: data.email, password: data.password, redirect: false });
-		if(b?.ok) {
-			console.log(b.error, b.status);
-		}
 		reset();
 	}
 
@@ -33,7 +30,7 @@ export const LoginForm = ({ csrfToken }: LoginFormProps) => {
 						<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
 							{t("login.form.title")}
 						</h1>
-						<Form csrfToken={csrfToken} register={register} onSubmit={handleSubmit(handleSubmitAction)} isSubmitDisabled={!isValid} />
+						<Form register={register} onSubmit={handleSubmit(handleSubmitAction)} isSubmitDisabled={!isValid} />
 					</div>
 				</div>
 			</div>

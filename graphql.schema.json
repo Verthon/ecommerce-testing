@@ -73916,6 +73916,18 @@
             "deprecationReason": null
           },
           {
+            "name": "rawPayload_json_path_exists",
+            "description": "All values containing the given json path.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "release",
             "description": null,
             "type": {
@@ -75034,6 +75046,18 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawPayload_json_path_exists",
+            "description": "All values containing the given json path.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null,
@@ -82196,6 +82220,12 @@
           },
           {
             "name": "in",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "json_path_exists",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const FeaturedSection = () => {
 	return (
 		<section>
@@ -16,19 +18,19 @@ export const FeaturedSection = () => {
 								</p>
 							</header>
 
-							<a
+							<Link
 								href="#"
 								className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-gray-900 border border-gray-900 rounded hover:shadow focus:outline-none focus:ring"
 							>
 								Shop All
-							</a>
+							</Link>
 						</div>
 					</div>
 
 					<div className="lg:col-span-2 lg:py-8">
 						<ul className="grid grid-cols-2 gap-4">
 							<li>
-								<a href="#" className="block group">
+								<Link href="#" className="block group">
 									<img
 										src="https://images.unsplash.com/photo-1625591340248-6d289000f96a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2656&q=80"
 										alt=""
@@ -42,11 +44,11 @@ export const FeaturedSection = () => {
 
 										<p className="mt-1 text-sm text-gray-700">$150</p>
 									</div>
-								</a>
+								</Link>
 							</li>
 
 							<li>
-								<a href="#" className="block group">
+								<Link href="#" className="block group">
 									<img
 										src="https://images.unsplash.com/photo-1624545104844-0d342896e7a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80"
 										alt=""
@@ -60,7 +62,7 @@ export const FeaturedSection = () => {
 
 										<p className="mt-1 text-sm text-gray-700">$150</p>
 									</div>
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

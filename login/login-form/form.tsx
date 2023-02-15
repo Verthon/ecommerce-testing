@@ -2,7 +2,7 @@ import { useLocale } from "hooks/useLocale/useLocale";
 import Link from "next/link";
 import { LoginFormUIProps } from "./login-form.types";
 
-export const Form = ({ csrfToken, register, isSubmitDisabled, onSubmit }: LoginFormUIProps) => {
+export const Form = ({ register, isSubmitDisabled, onSubmit }: LoginFormUIProps) => {
 	const { t } = useLocale();
 
 	return (
@@ -10,7 +10,6 @@ export const Form = ({ csrfToken, register, isSubmitDisabled, onSubmit }: LoginF
 			className="space-y-4 md:space-y-6"
 			onSubmit={onSubmit}
 		>
-			<input name="csrfToken" type="hidden" defaultValue={csrfToken} />
 			<div>
 				<label
 					htmlFor="email"
