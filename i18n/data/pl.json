@@ -31,5 +31,11 @@
 	"register.form.acceptTerms": "Akceptuję warunki",
 	"register.form.termsAndConditions": "Regulaminu",
 	"register.form.alreadyHaveAccount": "Posiadasz juz konto ?",
-	"register.form.loginHere": "Zaloguj się"
+	"register.form.loginHere": "Zaloguj się",
+	"footer.brandCopyright": "© 2023 Brand Eyewear™.",
+	"footer.allRights": "Wszelkie prawa zastrzezone.",
+	"footer.followUs": "Śledź nas",
+	"footer.legal": "Noty prawne",
+	"footer.privacyPolicy": "Polityka prywatności",
+	"footer.termsAndConditions": "Warunki i postanowienia"
 }

@@ -1,6 +1,6 @@
 {
 	"home.heroTitle.art": "The art of",
-	"home.heroTitle.handcrafted": "handcrafted eyewear.", 
+	"home.heroTitle.handcrafted": "handcrafted eyewear.",
 	"home.heroDescription": "Our eyewear is unique style and uncompromising quality based on materials from the world's best manufacturers.",
 	"home.shopNow": "Shop now",
 	"home.navbar.products": "products",
@@ -19,7 +19,7 @@
 	"login.form.passwordLabel": "Password",
 	"login.form.noAccount": "Don’t have an account yet?",
 	"login.form.singIn": "Sign in",
-  "login.form.rememberMe": "Remember me",
+	"login.form.rememberMe": "Remember me",
 	"login.form.signUp": "Sign up",
 	"register.pageTitle": "Create a new account",
 	"register.form.createAccount": "Create an account",
@@ -31,5 +31,11 @@
 	"register.form.acceptTerms": "I accept the",
 	"register.form.termsAndConditions": "Terms and Conditions",
 	"register.form.alreadyHaveAccount": "Already have account ?",
-  "register.form.loginHere": "Login here"
+	"register.form.loginHere": "Login here",
+	"footer.brandCopyright": "© 2023 Brand Eyewear™.",
+	"footer.allRights": "All Rights Reserved.",
+	"footer.followUs": "Follow us",
+	"footer.legal": "Legal",
+	"footer.privacyPolicy": "Privacy Policy",
+	"footer.termsAndConditions": "Terms & conditions"
 }
