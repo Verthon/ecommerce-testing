@@ -78,3 +78,19 @@ query GetAllCategoriesByPrimaryWithLocale($isPrimaryCategory: Boolean!, $locale:
     }
   }
 }
+
+query GetAllProductsList($locale: Locale!) {
+  products(locales: [$locale]) {
+    id
+    price
+    name
+    slug
+    description
+    images {
+      id
+      url
+      width
+      height
+    }
+  }
+}

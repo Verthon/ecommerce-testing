@@ -23,7 +23,6 @@ export const getStaticProps: GetStaticProps<{
 		categories: ApolloQueryResult<GetAllCategoriesByPrimaryWithLocaleQuery>["data"]["categories"];
 	};
 }> = async (context) => {
-	console.log('context', context.locale);
 	const primaryProductsCategories =
 		await apolloClient.query<GetAllCategoriesByPrimaryWithLocaleQuery>({
 			query: GetAllCategoriesByPrimaryWithLocaleDocument,
