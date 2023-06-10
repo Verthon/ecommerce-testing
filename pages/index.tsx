@@ -32,8 +32,8 @@ export const getStaticProps: GetStaticProps<{
 	return {
 		props: {
 			productCategories: {
-				isLoading: primaryProductsCategories.networkStatus === NetworkStatus.loading,
-				categories: primaryProductsCategories.data.categories,
+				isLoading: primaryProductsCategories?.networkStatus === NetworkStatus.loading,
+				categories: primaryProductsCategories?.data?.categories || null,
 			},
 		},
 	};
