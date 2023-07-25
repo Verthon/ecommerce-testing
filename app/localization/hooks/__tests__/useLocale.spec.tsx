@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 
 
-import { useLocale } from './useLocale';
+import { useLocale } from '../useLocale';
 
 describe('useLocale', () => {
   test('throws when locale context is unavailable', () => {

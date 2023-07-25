@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 
 import { Form } from "./form/form";
 

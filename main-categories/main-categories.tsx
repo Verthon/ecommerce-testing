@@ -1,4 +1,4 @@
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import Image from "next/image";
 import Link from "next/link";
 

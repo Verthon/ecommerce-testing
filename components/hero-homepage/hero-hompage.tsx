@@ -1,5 +1,5 @@
 import { Link } from "components/link/Link";
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import Image from "next/image";
 
 import heroImage from "./assets/hero-image.jpg";

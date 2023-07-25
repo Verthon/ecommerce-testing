@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import { NavItem } from "./nav-item/nav-item";
 import { LangSwitcher } from "components/lang-switcher/lang-switcher";
 import { useSession } from "next-auth/react";

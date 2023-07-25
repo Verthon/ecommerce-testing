@@ -1,4 +1,4 @@
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";

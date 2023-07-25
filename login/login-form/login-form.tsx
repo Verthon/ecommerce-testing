@@ -1,7 +1,7 @@
 import * as React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import { Form } from "./form";
 import { LoginFormSchema } from "./login-form.types";
 import { signIn } from "next-auth/react";

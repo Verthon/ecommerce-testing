@@ -14,8 +14,8 @@ import {
 } from "../generated/graphql";
 import { ApolloQueryResult } from "@apollo/client";
 import { MainCategories } from "main-categories/main-categories";
-import { useLocale } from "hooks/useLocale/useLocale";
-import { getShortLocaleVersion } from "utils/locale/locale";
+import { useLocale } from "app/localization/hooks/useLocale";
+import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 
 export const getStaticProps: GetStaticProps<{
 	productCategories: {

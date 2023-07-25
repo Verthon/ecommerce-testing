@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import type { RegisterFormInputs } from "./form.types";
 import { RegisterFormSchema, registerFormSchema } from "./form.schema";
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import Link from "next/link";
 
 export const Form = () => {

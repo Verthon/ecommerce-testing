@@ -1,6 +1,6 @@
-import enMessages from "./data/en.json";
-import plMessages from "./data/pl.json";
-import { AppLocale } from "./i18n.types";
+import { AppLocale } from "./models/AppLocale";
+import enMessages from "./translations/en.json";
+import plMessages from "./translations/pl.json";
 
 type KeyAsValue<T> = { [P in keyof T]: P };
 

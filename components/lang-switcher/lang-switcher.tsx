@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import { useRouter } from "next/router";
 
 export const LangSwitcher = () => {

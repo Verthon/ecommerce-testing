@@ -1,4 +1,4 @@
-import { useLocale } from "hooks/useLocale/useLocale";
+import { useLocale } from "app/localization/hooks/useLocale";
 import Link from "next/link";
 import { LoginFormUIProps } from "./login-form.types";
 
