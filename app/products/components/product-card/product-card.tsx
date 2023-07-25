@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 import { ProductCardProps } from "./product-card.types";
 
 export const ProductCard = ({ name, price, description, imageUrl }: ProductCardProps) => {
 	return (
 		<div className="bg-white shadow-lg rounded-lg p-6 w-72">
-			<img
+			<Image
 				className="w-full h-48 object-cover rounded-lg mb-4"
 				src={imageUrl}
 				alt={name}
