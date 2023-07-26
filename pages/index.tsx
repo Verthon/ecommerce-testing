@@ -7,7 +7,6 @@ import { FeaturedSection } from "../components/featured-section/featured-section
 import { Footer } from "../components/footer/Footer";
 import { HeroHomepage } from "../components/hero-homepage/hero-hompage";
 import { Navbar } from "../components/navbar/Navbar";
-import { apolloClient } from "../graphql/apolloClient";
 import {
 	GetAllCategoriesByPrimaryWithLocaleQuery,
 	GetAllCategoriesByPrimaryWithLocaleDocument
@@ -16,6 +15,7 @@ import { ApolloQueryResult } from "@apollo/client";
 import { MainCategories } from "main-categories/main-categories";
 import { useLocale } from "app/localization/hooks/useLocale";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
+import { apiClient } from "app/api/apiClient";
 
 export const getStaticProps: GetStaticProps<{
 	productCategories: {
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<{
 	};
 }> = async (context) => {
 	const primaryProductsCategories =
-		await apolloClient.query<GetAllCategoriesByPrimaryWithLocaleQuery>({
+		await apiClient.query<GetAllCategoriesByPrimaryWithLocaleQuery>({
 			query: GetAllCategoriesByPrimaryWithLocaleDocument,
 			variables: { isPrimaryCategory: true, locale: getShortLocaleVersion(context.locale) },
 		});

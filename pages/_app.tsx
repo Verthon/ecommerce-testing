@@ -2,8 +2,8 @@ import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 
 import "../styles/globals.css";
-import { GraphQlProvider } from "../providers/graphql-provider/graphql-provider";
 import { LocaleProvider } from "app/localization/contexts/locale-context";
+import { ApiProvider } from "app/api/contexts/api-provider";
 
 export default function App({
 	Component,
@@ -11,11 +11,11 @@ export default function App({
 }: AppProps) {
 	return (
 		<SessionProvider session={session}>
-			<GraphQlProvider>
+			<ApiProvider>
 				<LocaleProvider>
 					<Component {...pageProps} />
 				</LocaleProvider>
-			</GraphQlProvider>
+			</ApiProvider>
 		</SessionProvider>
 	);
 }

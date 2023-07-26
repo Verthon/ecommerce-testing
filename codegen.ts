@@ -7,7 +7,7 @@ loadEnvConfig(process.cwd())
 const config: CodegenConfig = {
   overwrite: true,
   schema: process.env.HYPERGRAPH_CONTENT_API,
-  documents: "graphql/*.graphql",
+  documents: "app/api/graphql/*.graphql",
   generates: {
     "generated/": {
       preset: "client",

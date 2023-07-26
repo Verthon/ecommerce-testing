@@ -11,13 +11,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Adding new queries
 
 1. Go to your Hypgraph account and generate the **query** in api playground
-2. Copy and paste generated query to `graphql/queries.graphql`
+2. Copy and paste generated query to `app/api/graphql/queries.graphql`
 3. Run `npm run generate-graphql` to generate code (types, handlers, hooks) for you automagically
 
 ## Adding new mutations
 
 1. Go to your Hypgraph account and generate the **mutation** in api playground
-2. Copy and paste generated query to `graphql/mutations.graphql`
+2. Copy and paste generated query to `app/api/graphql/mutations.graphql`
 3. Run `npm run generate-graphql` to generate code (types, handlers, hooks) for you automagically
 
 ## Getting Started

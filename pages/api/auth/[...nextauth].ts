@@ -7,7 +7,7 @@ import {
 	GetAccountByEmailQuery,
 	GetAccountByEmailQueryVariables,
 } from "../../../generated/graphql";
-import { authorizedApolloClient } from "../../../graphql/apolloClient";
+import { authorizedApiClient } from "app/api/apiClient";
 
 export const authOptions = {
 	pages: {
@@ -25,7 +25,7 @@ export const authOptions = {
 					return null;
 				}
 
-				const userByEmail = await authorizedApolloClient.query<
+				const userByEmail = await authorizedApiClient.query<
 					GetAccountByEmailQuery,
 					GetAccountByEmailQueryVariables
 				>({
