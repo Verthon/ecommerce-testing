@@ -55,7 +55,7 @@ export const Navbar = () => {
 					<img
 						src="https://flowbite.com/docs/images/logo.svg"
 						className="h-6 mr-3 sm:h-9"
-						alt="Pillow Logo"
+						alt="Eywear brand Logo"
 					/>
 					<span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
 						Brand Eyewear

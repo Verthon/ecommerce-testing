@@ -37,5 +37,8 @@
 	"footer.followUs": "Follow us",
 	"footer.legal": "Legal",
 	"footer.privacyPolicy": "Privacy Policy",
-	"footer.termsAndConditions": "Terms & conditions"
+	"footer.termsAndConditions": "Terms & conditions",
+	"products.pageTitle": "Products",
+	"products.pageDescription": "Our products",
+	"products.pageHeading": "Products"
 }

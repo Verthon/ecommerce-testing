@@ -15,7 +15,7 @@ export const MainCategories = ({ categories }: MainCategoriesProps) => {
 			<ul className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
 				{categories.map((category) => (
 					<li key={category.id} className="flex justify-items-center justify-self-center">
-						<Link href={category.slug} className="block group cursor-pointer">
+						<Link href={`/categories/${category.slug}`} className="block group cursor-pointer">
 							{category?.image?.url && (
 								<Image
 									className="rounded object-fit"

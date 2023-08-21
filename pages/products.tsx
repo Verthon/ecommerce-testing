@@ -47,20 +47,17 @@ export default function ProductsPage({ products }: ProductsProps) {
   return (
     <>
       <Head>
-        <title>{t("account.pageTitle")}</title>
-        <meta name="description" content="About Brand Eyewear" />
+        <title>{t("products.pageTitle")}</title>
+        <meta name="description" content={t("products.pageDescription")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <div className="container mx-auto my-6 bg-white text-gray-900 sm:my-12">
-        <h1>Products</h1>
+        <h1>{t("products.pageHeading")}</h1>
         <div className="mx-12 mt-6">
           {products.list && (
-            <ProductsList
-              list={products.list}
-              isLoading={products.isLoading}
-            />
+            <ProductsList list={products.list} isLoading={products.isLoading} />
           )}
         </div>
       </div>

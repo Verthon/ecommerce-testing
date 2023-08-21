@@ -25,7 +25,7 @@ query GetProductsSlugs {
 # }
 
 query GetAccountByEmail($email: String!) {
-  account(where: {email: $email}) {
+  account(where: { email: $email }) {
     id
     email
     password
@@ -47,7 +47,7 @@ query GetAllCategories {
 }
 
 query GetAllCategoriesByPrimary($isPrimaryCategory: Boolean!) {
-  categories(where: {isPrimaryCategory: $isPrimaryCategory}) {
+  categories(where: { isPrimaryCategory: $isPrimaryCategory }) {
     id
     localizations(locales: [en, pl], includeCurrent: true) {
       name
@@ -59,22 +59,36 @@ query GetAllCategoriesByPrimary($isPrimaryCategory: Boolean!) {
       id
       height
       width
-      url(transformation: {image: {resize: {fit: crop, height: 250, width: 250}}})
+      url(
+        transformation: {
+          image: { resize: { fit: crop, height: 250, width: 250 } }
+        }
+      )
     }
   }
 }
 
-query GetAllCategoriesByPrimaryWithLocale($isPrimaryCategory: Boolean!, $locale: Locale!) {
-  categories(where: {isPrimaryCategory: $isPrimaryCategory}, locales:[$locale]) {
+query GetAllCategoriesByPrimaryWithLocale(
+  $isPrimaryCategory: Boolean!
+  $locale: Locale!
+) {
+  categories(
+    where: { isPrimaryCategory: $isPrimaryCategory }
+    locales: [$locale]
+  ) {
     id
-    name,
-    description,
+    name
+    description
     slug
     image {
       id
       height
       width
-      url(transformation: {image: {resize: {fit: crop, height: 250, width: 250}}})
+      url(
+        transformation: {
+          image: { resize: { fit: crop, height: 250, width: 250 } }
+        }
+      )
     }
   }
 }
@@ -92,5 +106,31 @@ query GetAllProductsList($locale: Locale!) {
       width
       height
     }
+  }
+}
+
+query GetProductsByCategorySlug($locale: Locale!, $categorySlugName: String!) {
+  products(
+    locales: [$locale]
+    where: { categories_every: { slug: $categorySlugName } }
+  ) {
+    id
+    price
+    name
+    slug
+    description
+    images {
+      id
+      url
+      width
+      height
+    }
+  }
+}
+
+query GetAllPrimaryCategoriesSlugs($locale: Locale!) {
+  categories(where: { isPrimaryCategory: true }, locales: [$locale]) {
+    id
+    slug
   }
 }

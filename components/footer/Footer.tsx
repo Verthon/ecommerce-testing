@@ -17,7 +17,7 @@ export const Footer = () => {
 	];
 
 	return (
-		<footer className="p-4 bg-white sm:p-6">
+		<footer className="p-4 bg-white sm:p-6 container mx-auto">
 			<div className="md:flex md:justify-between">
 				<div className="mb-6 md:mb-0">
 					<Link href="https://flowbite.com/" className="flex items-center">
