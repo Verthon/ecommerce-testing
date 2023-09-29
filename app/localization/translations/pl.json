@@ -51,5 +51,10 @@
   "contact.message": "wiadomość",
   "contact.privacyConsentFirstPart": "Wybierając tę opcję, wyrażasz zgodę na naszą",
   "contact.privacyConsentLastPart": "politykę prywatności",
-  "contact.submit": "wyślij wiadomość"
+  "contact.submit": "wyślij wiadomość",
+  "contact.requiredError": "Pole wymagane",
+  "contact.incorrectEmail": "Proszę wpisać poprawny email",
+  "contact.emailSentFailure": "Nie udało się wysłać wiadomości, sprobój ponownie",
+  "contact.emailSentSuccess": "Wysłano pomyślnie, odpowiemy wkrótce",
+  "core.dismiss": "Zamknij"
 }

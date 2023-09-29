@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Link from "next/link";
 
 import type { RegisterFormInputs } from "./form.types";
 import { RegisterFormSchema, registerFormSchema } from "./form.schema";
 import { useLocale } from "app/localization/hooks/useLocale";
-import Link from "next/link";
 
 export const Form = () => {
 	const { t } = useLocale();

@@ -51,5 +51,10 @@
   "contact.message": "message",
   "contact.privacyConsentFirstPart": "By selecting this, you agree to our",
   "contact.privacyConsentLastPart": "privacy policy",
-	"contact.submit": "send message" 
+  "contact.submit": "send message",
+  "contact.requiredError": "Required field",
+  "contact.incorrectEmail": "Enter valid email",
+  "contact.emailSentFailure": "Failed to send submit, please submit again",
+  "contact.emailSentSuccess": "Submitted successfully, we will respond shortly",
+  "core.dismiss": "Dismiss"
 }

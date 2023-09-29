@@ -43,3 +43,7 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Gotchas
+
+1. In case you are creating new folder with Tailwind classes and they don't appear - make sure you add it to the `content` of `tailwind.config.js` file

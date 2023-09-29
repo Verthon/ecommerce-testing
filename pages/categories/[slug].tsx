@@ -25,8 +25,6 @@ export const getStaticPaths = async (context: any) => {
       },
     });
 
-  console.log("primaryCategoriesSlugs", primaryCategoriesSlugs);
-
   const paths = primaryCategoriesSlugs.data.categories.map((categories) => ({
     params: { slug: categories.slug },
   }));
