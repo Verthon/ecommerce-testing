@@ -13,17 +13,6 @@ query GetProductsSlugs {
   }
 }
 
-# query GetProductBySlug($slug: String!) {
-#   product(where: {slug: $slug}) {
-#     slug
-#     name
-#     description
-#     images {
-#       url
-#     }
-#   }
-# }
-
 query GetAccountByEmail($email: String!) {
   account(where: { email: $email }) {
     id
@@ -131,6 +120,26 @@ query GetProductsByCategorySlug($locale: Locale!, $categorySlugName: String!) {
 query GetAllPrimaryCategoriesSlugs($locale: Locale!) {
   categories(where: { isPrimaryCategory: true }, locales: [$locale]) {
     id
+    slug
+  }
+}
+
+query GetProductBySlug($slug: String!, $locale: Locale!) {
+  product(where: {slug: $slug}, locales: [$locale]) {
+    id
+    name
+    description
+    images {
+      id
+      url
+      width
+      height
+    }
+  }
+}
+
+query GetAllProductSlugs {
+  products {
     slug
   }
 }

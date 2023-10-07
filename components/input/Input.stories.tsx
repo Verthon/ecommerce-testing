@@ -16,6 +16,8 @@ type Story = StoryObj<typeof meta>;
 export const DefaultInput: Story = {
   args: {
     name: "my-input",
+    onBlur: async () => console.log("blur"),
+    onChange: async () => console.log("change"),
   },
 };
 
@@ -23,6 +25,8 @@ export const DisabledInput: Story = {
   args: {
     name: "my-input",
     inputStatus: "disabled",
+    onBlur: async () => console.log("blur"),
+    onChange: async () => console.log("change"),
   },
 };
 
@@ -30,6 +34,8 @@ export const LoadingInput: Story = {
   args: {
     name: "my-input",
     inputStatus: "loading",
+    onBlur: async () => console.log("blur"),
+    onChange: async () => console.log("change"),
   },
 };
 
@@ -37,5 +43,7 @@ export const ErrorInput: Story = {
   args: {
     name: "my-input",
     inputStatus: "error",
+    onBlur: async () => console.log("blur"),
+    onChange: async () => console.log("change"),
   },
 };

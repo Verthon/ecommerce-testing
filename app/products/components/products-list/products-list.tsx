@@ -18,7 +18,7 @@ export const ProductsList = ({
           description={product.description}
           price={String(product.price)}
           slug={product.slug}
-          imageUrl={product.images[0]?.url}
+          imageUrl={product.images?.[0]?.url}
           isLoading={isLoading}
         />
       ))}

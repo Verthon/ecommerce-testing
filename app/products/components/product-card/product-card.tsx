@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export type ProductCardProps = {
-  imageUrl: string;
+  imageUrl?: string;
   name: string;
   price: string;
   description: string;
@@ -36,16 +36,18 @@ export const ProductCard = ({
   }
 
   return (
-    <a className="max-w-md`" href={`/${slug}`}>
-      <div className="group relative max-w-md rounded-lg bg-white shadow-lg">
-        <Image
-          className="mb-4 h-48 w-full rounded-lg object-cover"
-          src={imageUrl}
-          alt={name}
-          width={300}
-          height={300}
-          quality={100}
-        />
+    <a className="max-w-md`" href={`/products/${slug}`}>
+      <div className="group relative max-w-md rounded-lg bg-white">
+        {imageUrl && (
+          <Image
+            className="mb-4 h-48 w-full rounded-lg object-cover"
+            src={imageUrl}
+            alt={name}
+            width={300}
+            height={300}
+            quality={100}
+          />
+        )}
         <h3 className="mb-2 text-xl font-semibold">{name}</h3>
         <p className="mb-2 text-gray-600">{description}</p>
         <div className="flex items-center justify-between">

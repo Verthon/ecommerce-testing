@@ -1,8 +1,7 @@
+import type { CodegenConfig } from "@graphql-codegen/cli";
+import { loadEnvConfig } from "@next/env";
 
-import type { CodegenConfig } from '@graphql-codegen/cli';
-import { loadEnvConfig } from '@next/env'
-
-loadEnvConfig(process.cwd())
+loadEnvConfig(process.cwd());
 
 const config: CodegenConfig = {
   overwrite: true,
@@ -11,12 +10,18 @@ const config: CodegenConfig = {
   generates: {
     "generated/": {
       preset: "client",
-      plugins: []
+      plugins: [],
     },
     "./graphql.schema.json": {
-      plugins: ["introspection"]
-    }
-  }
+      plugins: ["introspection"],
+    },
+  },
+  config: {
+    defaultScalarType: "unknown",
+    skipTypename: true,
+    useTypeImport: true,
+    enumsAsTypes: true,
+  },
 };
 
 export default config;
