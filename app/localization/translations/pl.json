@@ -56,5 +56,11 @@
   "contact.incorrectEmail": "Proszę wpisać poprawny email",
   "contact.emailSentFailure": "Nie udało się wysłać wiadomości, sprobój ponownie",
   "contact.emailSentSuccess": "Wysłano pomyślnie, odpowiemy wkrótce",
-  "core.dismiss": "Zamknij"
+  "core.dismiss": "Zamknij",
+  "productDetails.productInformation": "Informacje o produktu",
+  "productDetails.inStockAndReadyToShip": "Produkt dostępny, gotowy do wysyłki",
+  "productDetails.addToCart": "Dodaj do koszyka",
+  "notFoundPage.title": "Nie znaleziono strony",
+  "notFoundPage.description": "Strona, której szukasz, nie istnieje.",
+  "notFoundPage.backToHome": "Wróć do strony głównej"
 }

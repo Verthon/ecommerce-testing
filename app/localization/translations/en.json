@@ -56,5 +56,11 @@
   "contact.incorrectEmail": "Enter valid email",
   "contact.emailSentFailure": "Failed to send submit, please submit again",
   "contact.emailSentSuccess": "Submitted successfully, we will respond shortly",
-  "core.dismiss": "Dismiss"
+  "core.dismiss": "Dismiss",
+  "productDetails.productInformation": "Product information",
+  "productDetails.inStockAndReadyToShip": "In stock and ready to ship",
+  "productDetails.addToCart": "Add to cart",
+  "notFoundPage.title": "Page not found",
+  "notFoundPage.description": "The page you are looking for does not exist.",
+  "notFoundPage.backToHome": "Back to home page"
 }

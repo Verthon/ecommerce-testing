@@ -1,10 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export type ProductCardProps = {
   imageUrl?: string;
   name: string;
-  price: string;
-  description: string;
   isLoading?: boolean;
   slug: string;
 };
@@ -25,8 +24,6 @@ const ProductCardSkeleton = () => {
 
 export const ProductCard = ({
   name,
-  price,
-  description,
   imageUrl,
   slug,
   isLoading,
@@ -36,27 +33,23 @@ export const ProductCard = ({
   }
 
   return (
-    <a className="max-w-md`" href={`/products/${slug}`}>
+    <Link className="max-w-md`" href={`/products/${slug}`}>
       <div className="group relative max-w-md rounded-lg bg-white">
         {imageUrl && (
           <Image
-            className="mb-4 h-48 w-full rounded-lg object-cover"
             src={imageUrl}
             alt={name}
             width={300}
             height={300}
             quality={100}
+
           />
         )}
-        <h3 className="mb-2 text-xl font-semibold">{name}</h3>
-        <p className="mb-2 text-gray-600">{description}</p>
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-semibold">{price}</span>
-          <button className="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
-            Add to Cart
-          </button>
-        </div>
+        <h3 className="mt-1 font-semibold text-gray-900">
+          <span className="absolute inset-0" />
+          {name}
+        </h3>
       </div>
-    </a>
+    </Link>
   );
 };
