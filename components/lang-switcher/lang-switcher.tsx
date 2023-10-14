@@ -25,10 +25,10 @@ export const LangSwitcher = () => {
 			id="langaugeSwitcher"
 			value={locale}
 			onChange={handleChange}
-			className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 mx-8 cursor-pointer"
+			className="bg-transparent border border-gray-600 text-gray-100 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 py-1.5 px-2  cursor-pointer"
 		>
-			<option value="en">🇨🇦 {t("global.navbar.english")}</option>
-			<option value="pl">🇵🇱 {t("global.navbar.polish")}</option>
+			<option value="en">🇨🇦 &#160;{t("global.navbar.english")}</option>
+			<option value="pl">🇵🇱 &#160;{t("global.navbar.polish")}</option>
 		</select>
 	);
 };

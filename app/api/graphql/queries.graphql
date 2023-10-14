@@ -125,7 +125,7 @@ query GetAllPrimaryCategoriesSlugs($locale: Locale!) {
 }
 
 query GetProductBySlug($slug: String!, $locale: Locale!) {
-  product(where: {slug: $slug}, locales: [$locale]) {
+  product(where: { slug: $slug }, locales: [$locale]) {
     id
     name
     description
@@ -141,5 +141,26 @@ query GetProductBySlug($slug: String!, $locale: Locale!) {
 query GetAllProductSlugs {
   products {
     slug
+  }
+}
+
+query GetProductsByCategorySlugAndCollectionSlug(
+  $categorySlug: String!
+  $collectionSlug: String!
+  $locale: Locale!
+) {
+  products(
+    where: {
+      AND: [
+        { categories_some: { slug: $categorySlug } }
+        { collections_some: { slug: $collectionSlug } }
+      ]
+    }
+    locales: [$locale]
+  ) {
+    id
+    name
+    slug
+    productAvailability
   }
 }
