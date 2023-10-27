@@ -1,59 +1,8 @@
-query GetAllProducts {
-  products {
-    id
-    slug
-    name
-    description
-  }
-}
-
-query GetProductsSlugs {
-  products {
-    slug
-  }
-}
-
 query GetAccountByEmail($email: String!) {
   account(where: { email: $email }) {
     id
     email
     password
-  }
-}
-
-query GetAllCategories {
-  categories {
-    id
-    name
-    description
-    image {
-      id
-      height
-      width
-      url
-    }
-  }
-}
-
-query GetAllCategoriesByPrimary($isPrimaryCategory: Boolean!) {
-  categories(where: { isPrimaryCategory: $isPrimaryCategory }) {
-    id
-    localizations(locales: [en, pl], includeCurrent: true) {
-      name
-      description
-      locale
-    }
-    slug
-    image {
-      id
-      height
-      width
-      url(
-        transformation: {
-          image: { resize: { fit: crop, height: 250, width: 250 } }
-        }
-      )
-    }
   }
 }
 
@@ -67,17 +16,17 @@ query GetAllCategoriesByPrimaryWithLocale(
   ) {
     id
     name
-    description
     slug
+    description
     image {
       id
-      height
-      width
       url(
         transformation: {
           image: { resize: { fit: crop, height: 250, width: 250 } }
         }
       )
+      width
+      height
     }
   }
 }
@@ -85,40 +34,41 @@ query GetAllCategoriesByPrimaryWithLocale(
 query GetAllProductsList($locale: Locale!) {
   products(locales: [$locale]) {
     id
-    price
     name
     slug
-    description
-    images {
+    images(first: 1) {
       id
       url
       width
       height
     }
+    productAvailability
   }
 }
 
-query GetProductsByCategorySlug($locale: Locale!, $categorySlugName: String!) {
+query GetProductsByCategorySlug(
+  $locales: [Locale!]!
+  $categorySlugName: String!
+) {
   products(
-    locales: [$locale]
-    where: { categories_every: { slug: $categorySlugName } }
+    locales: $locales
+    where: { categories_some: { slug: $categorySlugName } }
   ) {
     id
-    price
     name
     slug
-    description
-    images {
+    images(first: 1) {
       id
       url
       width
       height
     }
+    productAvailability
   }
 }
 
-query GetAllPrimaryCategoriesSlugs($locale: Locale!) {
-  categories(where: { isPrimaryCategory: true }, locales: [$locale]) {
+query GetAllPrimaryCategoriesSlugs {
+  categories(where: { isPrimaryCategory: true }) {
     id
     slug
   }
@@ -128,13 +78,15 @@ query GetProductBySlug($slug: String!, $locale: Locale!) {
   product(where: { slug: $slug }, locales: [$locale]) {
     id
     name
-    description
-    images {
+    slug
+    images(first: 1) {
       id
       url
       width
       height
     }
+    description
+    productAvailability
   }
 }
 
@@ -161,6 +113,24 @@ query GetProductsByCategorySlugAndCollectionSlug(
     id
     name
     slug
+    images(first: 1) {
+      id
+      url
+      width
+      height
+    }
     productAvailability
+  }
+}
+
+query GetAllCategoriesSlugs($locale: Locale!) {
+  categories(locales: [$locale]) {
+    slug
+  }
+}
+
+query GetAllCollectionsSlugs($locale: Locale!) {
+  collections(locales: [$locale]) {
+    slug
   }
 }

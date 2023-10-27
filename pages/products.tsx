@@ -1,10 +1,8 @@
 import { useLocale } from "app/localization/hooks/useLocale";
 import Head from "next/head";
-
-import { Footer } from "../components/footer/Footer";
-import { Navbar } from "../components/navbar/Navbar";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ApolloQueryResult, NetworkStatus } from "@apollo/client";
+
 import {
   GetAllProductsListDocument,
   GetAllProductsListQuery,
@@ -12,6 +10,7 @@ import {
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 import { apiClient } from "app/api/apiClient";
 import { ProductsList } from "app/products/components/products-list/products-list";
+import { MainLayout } from "app/shared/components/main-layout/main-layout";
 
 export const getStaticProps: GetStaticProps<{
   products: {
@@ -19,11 +18,13 @@ export const getStaticProps: GetStaticProps<{
     list: ApolloQueryResult<GetAllProductsListQuery>["data"]["products"];
   };
 }> = async (context) => {
+  const locale = context.locale || context.defaultLocale;
+
   const allProductsList = await apiClient.query<GetAllProductsListQuery>({
     query: GetAllProductsListDocument,
     variables: {
       isPrimaryCategory: true,
-      locale: getShortLocaleVersion(context.locale),
+      locale: getShortLocaleVersion(locale),
     },
   });
 
@@ -52,16 +53,19 @@ export default function ProductsPage({ products }: ProductsProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <div className="container mx-auto my-6 bg-white text-gray-900 sm:my-12">
-        <h1>{t("products.pageHeading")}</h1>
-        <div className="mx-12 mt-6">
-          {products.list && (
-            <ProductsList list={products.list} isLoading={products.isLoading} />
-          )}
+      <MainLayout>
+        <div className="container mx-auto my-6 bg-white text-gray-900 sm:my-12">
+          <h1>{t("products.pageHeading")}</h1>
+          <div className="mx-12 mt-6">
+            {products.list && (
+              <ProductsList
+                list={products.list}
+                isLoading={products.isLoading}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      <Footer />
+      </MainLayout>
     </>
   );
 }

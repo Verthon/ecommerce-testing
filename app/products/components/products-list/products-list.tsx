@@ -15,8 +15,6 @@ export const ProductsList = ({
         <ProductCard
           key={product.id}
           name={product.name}
-          description={product.description}
-          price={String(product.price)}
           slug={product.slug}
           imageUrl={product.images?.[0]?.url}
           isLoading={isLoading}

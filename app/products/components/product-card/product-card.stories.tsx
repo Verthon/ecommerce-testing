@@ -16,9 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    description: "Description of uber premium glasses",
     name: "Eyewear Brand Laura",
-    price: "109900",
     imageUrl:
       "https://media.graphassets.com/resize=height:300,width:300/ls9CIxIRNWOJofjg7CHL",
     slug: "/bob",
@@ -27,9 +25,7 @@ export const Default: Story = {
 
 export const LoadingState: Story = {
   args: {
-    description: "Description of uber premium glasses",
     name: "Eyewear Brand Laura",
-    price: "109900",
     imageUrl: "",
     isLoading: true,
     slug: "/laura",

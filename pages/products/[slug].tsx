@@ -4,8 +4,6 @@ import { NetworkStatus } from "@apollo/client";
 import Image from "next/image";
 import { CheckIcon, ShieldCheckIcon } from "@heroicons/react/20/solid";
 
-import { Footer } from "components/footer/Footer";
-import { Navbar } from "components/navbar/Navbar";
 import { apiClient } from "app/api/apiClient";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 import {
@@ -22,15 +20,17 @@ import {
 } from "app/products/models/single-product.schema";
 import { isArray } from "@apollo/client/utilities";
 import { notFound } from "next/navigation";
+import { MainLayout } from "app/shared/components/main-layout/main-layout";
 
 export const getStaticPaths = (async () => {
   const productSlugs = await apiClient.query<GetAllProductSlugsQuery>({
     query: GetAllProductSlugsDocument,
   });
 
-  const paths = productSlugs.data.products.map((product) => ({
-    params: { slug: product.slug },
-  }));
+  const paths = productSlugs.data.products.flatMap((product) => [
+    { params: { slug: product.slug }, locale: "en-US" },
+    { params: { slug: product.slug }, locale: "pl-PL" },
+  ]);
 
   return {
     paths,
@@ -46,9 +46,7 @@ const validateData = async ({
   networkStatus: NetworkStatus;
 }) => {
   try {
-    const validatedData = await singleProductSchema.safeParseAsync(
-      product,
-    );
+    const validatedData = await singleProductSchema.safeParseAsync(product);
 
     if (validatedData.success) {
       return {
@@ -83,8 +81,8 @@ const validateData = async ({
 };
 
 export const getStaticProps = (async (context) => {
-  if(!context?.params?.slug || isArray(context.params.slug)) {
-    notFound(); 
+  if (!context?.params?.slug || isArray(context.params.slug)) {
+    return notFound();
   }
 
   try {
@@ -142,6 +140,8 @@ type ProductsByCategoryProps = ProductsByCategory;
 export default function ProductDetails({ product }: ProductsByCategoryProps) {
   const { t } = useLocale();
 
+  console.log(product.data, "product");
+
   if (!product.data) return null;
 
   return (
@@ -152,66 +152,66 @@ export default function ProductDetails({ product }: ProductsByCategoryProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div className="lg:max-w-lg lg:self-end">
-            <div className="mt-4">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {product.data?.name}
-              </h1>
-            </div>
+      <MainLayout>
+        <div className="bg-white">
+          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+            <div className="lg:max-w-lg lg:self-end">
+              <div className="mt-4">
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  {product.data?.name}
+                </h1>
+              </div>
 
-            <section aria-labelledby="information-heading" className="mt-4">
-              <h2 id="information-heading" className="sr-only">
-                Product information
-              </h2>
+              <section aria-labelledby="information-heading" className="mt-4">
+                <h2 id="information-heading" className="sr-only">
+                  Product information
+                </h2>
 
-              <div className="flex items-center">
-                {/* <p className="text-lg text-gray-900 sm:text-xl">
+                <div className="flex items-center">
+                  {/* <p className="text-lg text-gray-900 sm:text-xl">
                   {product.price}
                 </p> */}
-              </div>
+                </div>
 
-              <div className="mt-4 space-y-6">
-                <p className="text-base text-gray-500">
-                  {product.data?.description}
-                </p>
-              </div>
+                <div className="mt-4 space-y-6">
+                  <p className="text-base text-gray-500">
+                    {product.data?.description}
+                  </p>
+                </div>
 
-              <div className="mt-6 flex items-center">
-                <CheckIcon
-                  className="h-5 w-5 flex-shrink-0 text-green-500"
-                  aria-hidden="true"
+                <div className="mt-6 flex items-center">
+                  <CheckIcon
+                    className="h-5 w-5 flex-shrink-0 text-green-500"
+                    aria-hidden="true"
+                  />
+                  <p className="ml-2 text-sm text-gray-500">
+                    {t("productDetails.inStockAndReadyToShip")}
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
+              {product.data?.images[0]?.url && (
+                <Image
+                  src={product.data?.images[0]?.url}
+                  height={product.data?.images[0]?.height}
+                  width={product.data?.images[0]?.width}
+                  alt={product.data?.description}
                 />
-                <p className="ml-2 text-sm text-gray-500">
-                  {t('productDetails.inStockAndReadyToShip')}
-                </p>
-              </div>
-            </section>
-          </div>
+              )}
+            </div>
 
-          <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-            {product.data?.images[0]?.url && (
-              <Image
-                src={product.data?.images[0]?.url}
-                height={product.data?.images[0]?.height}
-                width={product.data?.images[0]?.width}
-                alt={product.data?.description}
-              />
-            )}
-          </div>
+            <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
+              <section aria-labelledby="options-heading">
+                <h2 id="options-heading" className="sr-only">
+                  Product options
+                </h2>
 
-          <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
-            <section aria-labelledby="options-heading">
-              <h2 id="options-heading" className="sr-only">
-                Product options
-              </h2>
-
-              <form>
-                <div className="sm:flex sm:justify-between">
-                  {/* Size selector */}
-                  {/* <RadioGroup value={selectedSize} onChange={setSelectedSize}>
+                <form>
+                  <div className="sm:flex sm:justify-between">
+                    {/* Size selector */}
+                    {/* <RadioGroup value={selectedSize} onChange={setSelectedSize}>
                     <RadioGroup.Label className="block text-sm font-medium text-gray-700">
                       Size
                     </RadioGroup.Label>
@@ -258,35 +258,35 @@ export default function ProductDetails({ product }: ProductsByCategoryProps) {
                       ))}
                     </div>
                   </RadioGroup> */}
-                </div>
-                <div className="mt-10">
-                  <button
-                    type="submit"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-                  >
-                    {t('productDetails.addToCart')}
-                  </button>
-                </div>
-                <div className="mt-6 text-center">
-                  <a
-                    href="#"
-                    className="group inline-flex text-base font-medium"
-                  >
-                    <ShieldCheckIcon
-                      className="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                    <span className="text-gray-500 hover:text-gray-700">
-                      Lifetime Guarantee
-                    </span>
-                  </a>
-                </div>
-              </form>
-            </section>
+                  </div>
+                  <div className="mt-10">
+                    <button
+                      type="submit"
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                    >
+                      {t("productDetails.addToCart")}
+                    </button>
+                  </div>
+                  <div className="mt-6 text-center">
+                    <a
+                      href="#"
+                      className="group inline-flex text-base font-medium"
+                    >
+                      <ShieldCheckIcon
+                        className="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      <span className="text-gray-500 hover:text-gray-700">
+                        Lifetime Guarantee
+                      </span>
+                    </a>
+                  </div>
+                </form>
+              </section>
+            </div>
           </div>
         </div>
-      </div>
-      <Footer />
+      </MainLayout>
     </>
   );
 }

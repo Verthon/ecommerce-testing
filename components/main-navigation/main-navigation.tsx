@@ -221,7 +221,7 @@ const FlyoutMenu = () => {
                       open
                         ? "border-indigo-600 text-indigo-600"
                         : "border-transparent text-gray-700 hover:text-gray-800",
-                      "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out focus:outline-none",
+                      "relative z-40 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out focus:outline-none",
                     )}
                   >
                     {t(category.name)}
@@ -244,7 +244,7 @@ const FlyoutMenu = () => {
                       aria-hidden="true"
                     />
 
-                    <div className="relative bg-white">
+                    <div className="relative bg-white z-10">
                       <div className="mx-auto max-w-7xl px-8">
                         <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                           {category.featured.map((item) => (
@@ -263,7 +263,7 @@ const FlyoutMenu = () => {
                                 className="mt-4 block font-medium text-gray-900"
                               >
                                 <span
-                                  className="absolute inset-0 z-10"
+                                  className="absolute inset-0 z-40"
                                   aria-hidden="true"
                                 />
                                 {t(item.name)}
@@ -304,7 +304,7 @@ const navigation = {
       featured: [
         {
           name: "home.flyoutMenu.newArrivals",
-          href: "/category/womans",
+          href: "/collections/woman/new-arrivals",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
           imageAlt:
@@ -312,7 +312,7 @@ const navigation = {
         },
         {
           name: "home.flyoutMenu.bestsellers",
-          href: "/category/womans",
+          href: "/collections/woman/bestsellers",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
           imageAlt:
@@ -325,7 +325,7 @@ const navigation = {
       featured: [
         {
           name: "home.flyoutMenu.newArrivals",
-          href: "#",
+          href: "/collections/mens/new-arrivals",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg",
           imageAlt:
@@ -333,7 +333,7 @@ const navigation = {
         },
         {
           name: "home.flyoutMenu.bestsellers",
-          href: "#",
+          href: "/collections/mens/bestsellers",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg",
           imageAlt: "Model wearing light heather gray t-shirt.",
