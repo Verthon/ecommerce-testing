@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 import { useLocale } from "app/localization/hooks/useLocale";
 import { Input } from "components/input/Input";
 
-import { ContactFormSchema, contactFormSchema } from "./contact-form.schema";
+import { type ContactFormSchema, contactFormSchema } from "./contact-form.schema";
 import { Label } from "components/label/label";
 import { useApiStatus } from "app/api/hooks/useApiStatus";
 import { InputError } from "components/input-error/input-error";

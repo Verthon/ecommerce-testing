@@ -1,5 +1,5 @@
-import { ContactFormSchema } from "../components/contact-form/contact-form.schema";
-import { ContactEmailMessage } from "../models/ContactEmailMessage";
+import type { ContactFormSchema } from "../components/contact-form/contact-form.schema";
+import type { ContactEmailMessage } from "../models/ContactEmailMessage";
 
 import { formatForEmail } from "./formatEmail";
 

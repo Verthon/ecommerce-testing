@@ -1,15 +1,15 @@
 import Head from "next/head";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { NetworkStatus } from "@apollo/client";
 
 import { ContentGrid } from "../components/content-grid/content-grid";
 import { FeaturedSection } from "../components/featured-section/featured-section";
 import { HeroHomepage } from "../components/hero-homepage/hero-hompage";
 import {
-  GetAllCategoriesByPrimaryWithLocaleQuery,
+  type GetAllCategoriesByPrimaryWithLocaleQuery,
   GetAllCategoriesByPrimaryWithLocaleDocument,
 } from "../generated/graphql";
-import { ApolloQueryResult } from "@apollo/client";
+import type { ApolloQueryResult } from "@apollo/client";
 import { MainCategories } from "main-categories/main-categories";
 import { useLocale } from "app/localization/hooks/useLocale";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ApiStatus } from "../models/ApiStatus";
+import { type ApiStatus } from "../models/ApiStatus";
 
 export const useApiStatus = () => {
   const [state, setState] = React.useState<ApiStatus>("idle");

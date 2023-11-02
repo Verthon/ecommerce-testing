@@ -1,6 +1,6 @@
 import { Link } from "components/link/Link";
 import { useLocale } from "app/localization/hooks/useLocale";
-import Image from "next/image";
+import NextImage from "next/image";
 
 import heroImage from "./assets/hero-image.jpg";
 
@@ -30,7 +30,7 @@ export const HeroHomepage = () => {
 					</div>
 				</div>
 				<div className="flex justify-self-end mb-6 sm:mb-0 order-1 sm:order-2 sm:pr-6">
-					<Image src={heroImage} width={640} height={420} alt="" quality={100} />
+					<NextImage src={heroImage} width={640} height={420} alt="" quality={100} />
 				</div>
 			</div>
 		</section>

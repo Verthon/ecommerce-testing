@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { ProductCard } from "../product-card/product-card";
-import { AllProducts } from "pages/products";
+import type { AllProducts } from "pages/products";
 
 type ProductsListProps = AllProducts["products"];
 

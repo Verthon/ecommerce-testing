@@ -1,11 +1,11 @@
 import { useLocale } from "app/localization/hooks/useLocale";
 import Head from "next/head";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { ApolloQueryResult, NetworkStatus } from "@apollo/client";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { type ApolloQueryResult, NetworkStatus } from "@apollo/client";
 
 import {
   GetAllProductsListDocument,
-  GetAllProductsListQuery,
+  type GetAllProductsListQuery,
 } from "generated/graphql";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 import { apiClient } from "app/api/apiClient";

@@ -1,5 +1,5 @@
 import sgMail from "@sendgrid/mail";
-import { ContactEmailMessage } from "../models/ContactEmailMessage";
+import type { ContactEmailMessage } from "../models/ContactEmailMessage";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 

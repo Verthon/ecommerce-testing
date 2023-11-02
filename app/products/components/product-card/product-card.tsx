@@ -1,4 +1,4 @@
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 
 export type ProductCardProps = {
@@ -36,13 +36,12 @@ export const ProductCard = ({
     <Link className="max-w-md`" href={`/products/${slug}`}>
       <div className="group relative max-w-md rounded-lg bg-white">
         {imageUrl && (
-          <Image
+          <NextImage
             src={imageUrl}
             alt={name}
             width={300}
             height={300}
             quality={100}
-
           />
         )}
         <h3 className="mt-1 font-semibold text-gray-900">

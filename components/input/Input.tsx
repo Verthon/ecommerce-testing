@@ -1,5 +1,5 @@
 import * as React from "react";
-import { UseFormRegister } from "react-hook-form";
+import type { UseFormRegister } from "react-hook-form";
 
 type InputProps = {
   name: string;

@@ -1,5 +1,5 @@
 import { sanitizeString } from "app/shared/utils/sanitizeString";
-import { ContactFormSchema } from "../components/contact-form/contact-form.schema";
+import type { ContactFormSchema } from "../components/contact-form/contact-form.schema";
 
 export const formatForEmail = (input: ContactFormSchema) => {
   return {

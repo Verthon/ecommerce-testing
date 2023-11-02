@@ -1,4 +1,4 @@
-import { AppLocale } from "./models/AppLocale";
+import { type AppLocale } from "./models/AppLocale";
 import enMessages from "./translations/en.json";
 import plMessages from "./translations/pl.json";
 

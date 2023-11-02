@@ -1,15 +1,19 @@
 import Head from "next/head";
 import { useParams, notFound } from "next/navigation";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { ApolloQueryResult, NetworkStatus } from "@apollo/client";
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from "next";
+import { type ApolloQueryResult, NetworkStatus } from "@apollo/client";
 
 import { apiClient } from "app/api/apiClient";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 import {
   GetAllPrimaryCategoriesSlugsDocument,
-  GetAllPrimaryCategoriesSlugsQuery,
+  type GetAllPrimaryCategoriesSlugsQuery,
   GetProductsByCategorySlugDocument,
-  GetProductsByCategorySlugQuery,
+  type GetProductsByCategorySlugQuery,
 } from "generated/graphql";
 import { ProductsList } from "app/products/components/products-list/products-list";
 import { useLocale } from "app/localization/hooks/useLocale";
@@ -44,10 +48,7 @@ export const getStaticProps: GetStaticProps<{
     list: ApolloQueryResult<GetProductsByCategorySlugQuery>["data"]["products"];
   };
 }> = async (context) => {
-  if (
-    typeof context?.params?.slug !== "string"
-  ) {
-
+  if (typeof context?.params?.slug !== "string") {
     return notFound();
   }
 
@@ -56,7 +57,10 @@ export const getStaticProps: GetStaticProps<{
       query: GetProductsByCategorySlugDocument,
       variables: {
         categorySlugName: context.params.slug,
-        locales: [getShortLocaleVersion("pl-PL"), getShortLocaleVersion("en-US")],
+        locales: [
+          getShortLocaleVersion("pl-PL"),
+          getShortLocaleVersion("en-US"),
+        ],
       },
     },
   );

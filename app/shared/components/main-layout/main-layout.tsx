@@ -6,7 +6,7 @@ export const MainLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <div className="flex min-h-screen flex-col">
       <MainNavigation />
-      <div>{children}</div>
+      <main className="flex flex-col flex-grow">{children}</main>
       <Footer />
     </div>
   );

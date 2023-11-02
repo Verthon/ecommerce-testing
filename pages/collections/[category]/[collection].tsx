@@ -1,15 +1,18 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { notFound } from "next/navigation";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { ApolloQueryResult, NetworkStatus } from "@apollo/client";
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from "next";
+import { type ApolloQueryResult, NetworkStatus } from "@apollo/client";
 
 import { apiClient } from "app/api/apiClient";
 import { getShortLocaleVersion } from "app/localization/utils/getShortLocaleVersion";
 import {
   GetProductsByCategorySlugAndCollectionSlugDocument,
-  GetProductsByCategorySlugAndCollectionSlugQuery,
-  GetProductsByCategorySlugAndCollectionSlugQueryVariables,
+  type GetProductsByCategorySlugAndCollectionSlugQuery,
+  type GetProductsByCategorySlugAndCollectionSlugQueryVariables,
 } from "generated/graphql";
 import { ProductsList } from "app/products/components/products-list/products-list";
 import { useLocale } from "app/localization/hooks/useLocale";
@@ -57,9 +60,8 @@ export const getStaticProps: GetStaticProps<{
     list: ApolloQueryResult<GetProductsByCategorySlugAndCollectionSlugQuery>["data"]["products"];
   };
 }> = async (context) => {
-
-  console.log('collection', context?.params?.collection);
-  console.log('category', context?.params?.category);
+  console.log("collection", context?.params?.collection);
+  console.log("category", context?.params?.category);
 
   if (
     typeof context?.params?.category !== "string" ||
@@ -70,15 +72,17 @@ export const getStaticProps: GetStaticProps<{
   }
 
   try {
-    const productsList =
-      await apiClient.query<GetProductsByCategorySlugAndCollectionSlugQuery, GetProductsByCategorySlugAndCollectionSlugQueryVariables>({
-        query: GetProductsByCategorySlugAndCollectionSlugDocument,
-        variables: {
-          categorySlug: context?.params?.category,
-          collectionSlug: context?.params?.collection,
-          locale: getShortLocaleVersion(context.locale),
-        },
-      });
+    const productsList = await apiClient.query<
+      GetProductsByCategorySlugAndCollectionSlugQuery,
+      GetProductsByCategorySlugAndCollectionSlugQueryVariables
+    >({
+      query: GetProductsByCategorySlugAndCollectionSlugDocument,
+      variables: {
+        categorySlug: context?.params?.category,
+        collectionSlug: context?.params?.collection,
+        locale: getShortLocaleVersion(context.locale),
+      },
+    });
 
     if (productsList.errors) {
       // Log the errors for debugging and return a fallback or error state.
@@ -101,7 +105,6 @@ export const getStaticProps: GetStaticProps<{
         },
       },
     };
-
   } catch (error) {
     // Handle network or other unexpected errors.
     console.error("API call failed:", error);

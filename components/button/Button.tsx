@@ -1,4 +1,4 @@
-import { ButtonProps } from "./Button.types";
+import type { ButtonProps } from "./Button.types";
 
 export const Button = ({ disabled, text, variant }: ButtonProps) => {
 	if (variant === "outline") {

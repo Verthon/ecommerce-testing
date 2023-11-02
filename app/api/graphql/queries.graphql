@@ -79,7 +79,7 @@ query GetProductBySlug($slug: String!, $locale: Locale!) {
     id
     name
     slug
-    images(first: 1) {
+    images(first: 4) {
       id
       url
       width
